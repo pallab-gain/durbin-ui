@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Home = (): React.ReactElement => {
-    return (
-        <h2>Home</h2>
-    )
-}
+const Home = (): React.ReactElement => (
+  <h2>Home</h2>
+);
 
-export {Home}
+export { Home };

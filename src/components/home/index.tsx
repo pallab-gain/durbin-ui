@@ -1,17 +1,13 @@
-import React from 'react';
+import React from "react";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {getValue, increment} from "../../features/root.slice";
+import {HomeView} from "./home.view";
 
 const Home = (): React.ReactElement => {
     const dispatch = useAppDispatch()
-    const value = useAppSelector( getValue)
-    return (
-        <>
-            <h2>Home</h2>
-            <h1>{value}</h1>
-            <button onClick={()=> dispatch(increment())}>BUTTON</button>
-        </>
-    );
+    const value = useAppSelector(getValue)
+    const addValue = () => dispatch(increment())
+    return <HomeView onClick={addValue} value={value}/>
 }
 
-export { Home };
+export {Home}

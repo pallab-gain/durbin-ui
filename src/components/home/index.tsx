@@ -1,6 +1,6 @@
 import React from "react";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {getValue, increment} from "../../features/root.slice";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
+import {getValue, increment} from "../../redux/root.slice";
 import {HomeView} from "./home.view";
 
 const Home = (): React.ReactElement => {

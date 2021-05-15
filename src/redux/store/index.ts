@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { reducer } from '../../features/root.slice';
-import {middleware} from "../../middlewares";
+import { reducer } from '../root.slice';
+import {middleware} from "../middlewares";
 
 export const store = configureStore({
   reducer: {

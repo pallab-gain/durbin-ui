@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const NotFound404 = (): React.ReactElement => {
-    return (
-        <h2>Empty</h2>
-    )
-}
+const NotFound404 = (): React.ReactElement => (
+  <h2>Empty</h2>
+);
 
-export {NotFound404}
+export { NotFound404 };

@@ -1,15 +1,25 @@
 import React from 'react';
 
 export interface HomeViewProps {
-    value: number
-    onClick: () => void
+    connect: () => void
+    produce: () => void
+    consume: () => void
+    stream?: MediaStream
 }
-const HomeView = ({ value, onClick}: HomeViewProps): React.ReactElement => {
+const HomeView = ({ connect, produce, consume, stream}: HomeViewProps): React.ReactElement => {
     return (
         <>
             <h2>Home</h2>
-            <h1>{value}</h1>
-            <button onClick={onClick}>BUTTON</button>
+            <button onClick={connect}>connect</button>
+            <button onClick={produce}>produce</button>
+            <button onClick={consume}>consume</button>
+
+            <video title={'localVideo'} ref={ audio => {
+                if(stream) {
+                    // @ts-ignore
+                    audio.srcObject = stream
+                }
+            }} autoPlay={true} controls={true}/>
         </>
     );
 }

@@ -17,7 +17,7 @@ class DurbinTransport {
     }
 
     static async createProducerTransport(peerId: string): Promise<TransportOptions> {
-        const {data} = await axios.get<TransportOptions>(getEndpoint(`create/publisher/transport/room/123/peer/${peerId}`))
+        const {data} = await axios.get<TransportOptions>(getEndpoint(`create/producer/transport/room/123/peer/${peerId}`))
         return data
     }
 
@@ -27,30 +27,30 @@ class DurbinTransport {
     }
 
     static async connectProducerTransport({dtlsParameters, peerId}: {peerId: string, dtlsParameters: MediaSoup.types.DtlsParameters }): Promise<void> {
-        await axios.post(getEndpoint(`connect/producer/transport/room/:roomId/peer/${peerId}`), {...dtlsParameters})
+        await axios.post(getEndpoint(`connect/producer/transport/room/123/peer/${peerId}`), {...dtlsParameters})
     }
 
     static async connectConsumerTransport({dtlsParameters, peerId}: {peerId: string, dtlsParameters: MediaSoup.types.DtlsParameters }): Promise<void> {
-        await axios.post(getEndpoint(`connect/consumer/transport/room/:roomId/peer/${peerId}`), {...dtlsParameters})
+        await axios.post(getEndpoint(`connect/consumer/transport/room/123/peer/${peerId}`), {...dtlsParameters})
     }
 
     static async produce({peerId, kind, rtpParameters}: {peerId: string, kind: MediaSoup.types.MediaKind, rtpParameters: MediaSoup.types.RtpParameters}): Promise<string> {
-        const {data} = await axios.post<string>(getEndpoint(`produce/room/:roomId/peer/${peerId}`), {kind, rtpParameters})
+        const {data} = await axios.post<string>(getEndpoint(`produce/room/123/peer/${peerId}`), {kind, rtpParameters})
         return data
     }
 
     static async consume({peerId, producerPeerId, rtpCapabilities}: {peerId: string, producerPeerId: string, rtpCapabilities: MediaSoup.types.RtpCapabilities}): Promise<MediaSoup.types.Consumer[]> {
-        const {data} = await axios.post<MediaSoup.types.Consumer[]>(getEndpoint(`consume/room/:roomId/peer/${peerId}/with/producer/peer/${producerPeerId}`), {rtpCapabilities})
+        const {data} = await axios.post<MediaSoup.types.Consumer[]>(getEndpoint(`consume/room/123/peer/${peerId}/with/producer/peer/${producerPeerId}`), {rtpCapabilities})
         return data
     }
 
-    static async producerList({peerId, rtpCapabilities}: {peerId: string, producerPeerId: string, rtpCapabilities: MediaSoup.types.RtpCapabilities}): Promise<string[]>  {
-        const {data} = await axios.get<string[]>(getEndpoint(`producer/list/room/:roomId/peer/${peerId}`))
+    static async producerList({peerId}: {peerId: string}): Promise<string[]>  {
+        const {data} = await axios.get<string[]>(getEndpoint(`producer/list/room/123/peer/${peerId}`))
         return data
     }
 
     static async resumeConsume({peerId}: {peerId: string}): Promise<void> {
-        await axios.get(getEndpoint(`resume/consumer/room/:roomId/peer/${peerId}`))
+        await axios.get(getEndpoint(`resume/consumer/room/123/peer/${peerId}`))
     }
 }
 export {DurbinTransport}

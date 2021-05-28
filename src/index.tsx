@@ -12,6 +12,7 @@ ReactDOM.render(
       <Auth0Provider
           domain="durbin-club.eu.auth0.com"
           clientId="EuVbffkDfd5tFCYim5iFgcToJTb3zt7B"
+          audience={'https://durbin.club'}
           redirectUri={window.location.origin}>
           <Provider store={store}>
               <App />

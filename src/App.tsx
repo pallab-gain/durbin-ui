@@ -8,7 +8,6 @@ import {
 import {About} from './components/about';
 import {Home} from './components/home';
 import { NotFound404 } from './components/NotFound404';
-import {ProtectedRoute} from "./protect.route";
 import {Logout} from "./components/logout";
 
 const App = () => (
@@ -17,8 +16,8 @@ const App = () => (
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
-        <ProtectedRoute path="/about" exact component={About}/>
-        <ProtectedRoute path="/" exact component={Home}/>
+        <Route path="/about" exact component={About}/>
+        <Route path="/" exact component={Home}/>
         <Route path="/logout" exact component={Logout}/>
         <Route path="*" component={NotFound404}/>
       </Switch>

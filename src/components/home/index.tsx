@@ -2,7 +2,6 @@ import React from "react";
 import {HomeView} from "./home.view";
 import {RTCClient} from "../../mediasoup/client.wrapper";
 import {DurbinTransport} from "../../mediasoup/transport";
-import {useAuth0} from "@auth0/auth0-react";
 
 const Home = (): React.ReactElement => {
     const rtcClient = React.useMemo(() => {
@@ -12,13 +11,6 @@ const Home = (): React.ReactElement => {
     const [roomId, setRoomId] = React.useState('1')
     const [peerId, setPeerId] = React.useState('1')
     const [accessToken, setAccessToken] = React.useState('')
-    const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-    React.useEffect(() => {
-        getAccessTokenSilently().then(token => {
-            setAccessToken(token)
-            rtcClient.setAccessToken(token)
-        })
-    },[isAuthenticated])
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPeerId(e.currentTarget.value)

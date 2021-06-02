@@ -31,6 +31,8 @@ class RTCClient {
         transport.on('connectionstatechange', (state) => this.onConnectionStateChange('producer', state))
         // start producing
         const stream = await this.startProducing(transport)
+        // @ts-ignore
+        window.transport = transport
         return stream
     }
 
